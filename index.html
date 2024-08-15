@@ -108,8 +108,15 @@
             'نظم التشغيل'
         ];
 
-        // درجات المواد (تجريبي)
-        const grades = ['F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'];
+        // درجات عشوائية بين F و C
+        const grades = subjects.map(() => {
+            const randomNum = Math.random();
+            if (randomNum < 0.5) {
+                return 'F';
+            } else {
+                return 'C';
+            }
+        });
 
         // إنشاء جدول للنتائج
         subjects.forEach((subject, index) => {
