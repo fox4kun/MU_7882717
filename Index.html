@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتيجة الامتحانات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f8ff; /* لون الخلفية */
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff; /* لون خلفية الحاوية */
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: #e6e9f2; /* لون خلفية الجدول */
+        }
+        table, th, td {
+            border: 1px solid #000000; /* لون حدود الجدول */
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            color: #000000; /* لون النص */
+        }
+        th {
+            background-color: #965048; /* لون خلفية الرؤوس */
+            color: #ffffff; /* لون نص الرؤوس */
+        }
+        td {
+            background-color: #f0f8ff; /* لون خلفية الأعمدة */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>جامعة المشرق</h2>
+    <p>الشؤون العلمية - لجنة الامتحانات</p>
+    <p style="color: red;">نتيجة العام الدراسي 2022 - 2023 م</p>
+
+    <input type="text" id="studentId" placeholder="أدخل رقم البطاقة">
+    <button onclick="showResult()">بحث</button>
+
+    <table id="resultTable" style="display:none;">
+        <thead>
+            <tr>
+                <th>المادة</th>
+                <th>التقدير</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- سيتم ملء هذا الجدول بواسطة JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function showResult() {
+        const studentId = document.getElementById('studentId').value;
+        const resultTable = document.getElementById('resultTable');
+        const tbody = resultTable.querySelector('tbody');
+        
+        // مسح المحتوى السابق
+        tbody.innerHTML = '';
+
+        // أسماء المواد
+        const subjects = [
+            'تقنيات الانترنت',
+            'الجبر الخطي والهندسة التحليلية',
+            'هندسة البرمجيات',
+            'التفاعل بين الإنسان والحاسوب',
+            'قواعد البيانات',
+            'تحليل وتصميم النظم',
+            'أساليب البرمجة',
+            'المعادلات التفاضلية',
+            'تحليل وتصميم الكينونات الموجهة',
+            'نظم إدارة قواعد البيانات',
+            'البرمجة الموجهة',
+            'أساسيات شبكات الحاسوب',
+            'هياكل البيانات والخوارزميات',
+            'نظم التشغيل'
+        ];
+
+        // درجات المواد (تجريبي)
+        const grades = ['B+', 'B', 'C', 'C', 'B', 'A', 'C', 'B+', 'C', 'A', 'B+', 'C', 'B', 'B+'];
+
+        // إنشاء جدول للنتائج
+        subjects.forEach((subject, index) => {
+            const row = document.createElement('tr');
+            const subjectCell = document.createElement('td');
+            const gradeCell = document.createElement('td');
+
+            subjectCell.textContent = subject;
+            gradeCell.textContent = grades[index]; // استخدم الدرجة المقابلة
+
+            row.appendChild(subjectCell);
+            row.appendChild(gradeCell);
+            tbody.appendChild(row);
+        });
+
+        // عرض الجدول
+        resultTable.style.display = 'table';
+    }
+</script>
+
+</body>
+</html>
